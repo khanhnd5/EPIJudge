@@ -3,8 +3,21 @@
 #include "test_framework/generic_test.h"
 using std::vector;
 double BuyAndSellStockOnce(const vector<double>& prices) {
-  // TODO - you fill in here.
-  return 0.0;
+  double result = 0;
+  int i = 0;
+  int j = 1;
+  while(j < prices.size()) {
+    if(prices[j] < prices[i]) {
+      i = j;
+      j++;
+      continue;
+    }
+    if((prices[j] - prices[i]) > result) {
+      result = prices[j] - prices[i];
+    }
+    j++;
+  }
+  return result;
 }
 
 int main(int argc, char* argv[]) {
